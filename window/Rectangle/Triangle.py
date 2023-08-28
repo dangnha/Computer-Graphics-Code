@@ -5,9 +5,10 @@ from OpenGL.GLU import *
 window = 0                                             # glut window number
 width, height = 1000, 800                               # window size
 
+# start drawing a rectangle
+
 
 def draw_rect(x, y, width, height):
-    # start drawing a rectangle
     glBegin(GL_LINE_LOOP)
     glVertex2f(x, y)                                   # bottom left point
     glVertex2f(x + width, y)                           # bottom right point

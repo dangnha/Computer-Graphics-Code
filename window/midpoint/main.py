@@ -1,3 +1,4 @@
+
 import pygame
 from pygame.locals import *
 from OpenGL.GL import *
@@ -5,30 +6,24 @@ from OpenGL.GLUT import *
 from OpenGL.GLU import *
 
 
-def bresenham_line(x1, y1, x2, y2):
-    dx = abs(x2 - x1)
-    dy = abs(y2 - y1)
-    x, y = x1, y1
-    d = 2*dy - dx
-    glVertex2f(x, y)
+def mid_point(x1, y1, x2, y2):
+    dx = x2 - x1
+    dy = y2 - y1
+    d = 2 * dy - dx
+    y = y1
 
-    while (x <= x2):
-        if d >= 0:
-            x = x + 1
-            y = y + 1
-            d = d + 2*(dy-dx)
-            glVertex2f(x, y)
-        elif d < 0:
-            x = x + 1
-            y = y
-            d = d + 2*dy
-            glVertex2f(x, y)
+    for x in range(x1, x2 + 1):
+        glVertex2f(x, y)
+        if d > 0:
+            y += 1
+            d -= 2 * dx
+        d += 2 * dy
 
 
 def draw_line():
     glBegin(GL_POINTS)
     glColor3f(1.0, 0.0, 0.0)
-    bresenham_line(100, 50, 150, 90)
+    mid_point(100, 50, 150, 90)
     glEnd()
 
 
