@@ -9,15 +9,15 @@ from OpenGL.GLU import *
 def mid_point(x1, y1, x2, y2):
     dx = x2 - x1
     dy = y2 - y1
-    d = 2 * dy - dx
+    d = dy - dx/2
     y = y1
 
     for x in range(x1, x2 + 1):
         glVertex2f(x, y)
         if d > 0:
             y += 1
-            d -= 2 * dx
-        d += 2 * dy
+            d = d + dy - dx
+        d += dy
 
 
 def draw_line():
