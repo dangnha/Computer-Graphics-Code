@@ -22,7 +22,7 @@ def draw_polygon():
 
 def main():
     pygame.init()
-    display = (800, 600)
+    display = (1000, 800)
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
 
     gluOrtho2D(0, 1, 0, 1)

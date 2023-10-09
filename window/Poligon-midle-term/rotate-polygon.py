@@ -5,7 +5,6 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 import math
 
-# Define the vertices of the polygon
 vertices = [
     (0.25, 0.25),
     (0.75, 0.25),
@@ -13,24 +12,10 @@ vertices = [
     (0.25, 0.75)
 ]
 
-# Function to rotate the polygon at a given angle
 
-
-def rotate_polygon(angle):
-    radians = math.radians(angle)
-    rotated_vertices = [
-        (
-            v[0] * math.cos(radians) - v[1] * math.sin(radians),
-            v[0] * math.sin(radians) + v[1] * math.cos(radians)
-        )
-        for v in vertices
-    ]
-    return rotated_vertices
-
-
-def draw_polygon(rotated_vertices):
+def draw_polygon():
     glBegin(GL_POLYGON)
-    for vertex in rotated_vertices:
+    for vertex in vertices:
         glVertex2fv(vertex)
     glEnd()
 
@@ -41,6 +26,10 @@ def main():
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
 
     gluOrtho2D(0, 1, 0, 1)
+    # Apply a 45-degree rotation
+    glTranslatef(0.5, 0.5, 0.0)
+    glRotatef(45, 0, 0, 1)
+    glTranslatef(-0.5, -0.5, 0.0)
 
     while True:
         for event in pygame.event.get():
@@ -49,13 +38,7 @@ def main():
                 quit()
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-
-        # Rotate the polygon at 45 degrees
-        rotated_vertices = rotate_polygon(45)
-
-        # Draw the rotated polygon
-        draw_polygon(rotated_vertices)
-
+        draw_polygon()
         pygame.display.flip()
         pygame.time.wait(10)
 
