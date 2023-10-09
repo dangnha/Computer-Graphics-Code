@@ -5,7 +5,10 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 
 # Define vertices of a polygon
+# Triangle
 vertices = [(100, 100), (200, 200), (300, 100)]
+# Rectangle
+# vertices = [(100, 100), (100, 200), (300, 200), (300, 100)]
 
 
 def draw_polygon(vertices):
@@ -55,7 +58,6 @@ def main():
     glClear(GL_COLOR_BUFFER_BIT)
     glColor3f(0.0, 1.0, 0.0)
 
-    draw_polygon(vertices)
     draw_scan_line(vertices)
 
     while True:
