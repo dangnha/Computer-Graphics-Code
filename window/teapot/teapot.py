@@ -3,6 +3,9 @@ from OpenGL.GLUT import *
 from OpenGL.GLU import *
 import sys
 
+teapot_scale_x = 1.0
+teapot_scale_y = 1.0
+teapot_scale_z = 1.0
 # Global variable for teapot height
 teapot_height = 1.0
 
@@ -26,7 +29,9 @@ def draw_teapot():
     glPushMatrix()
     glTranslatef(teapot_position_x, 0, 0)
     glRotatef(teapot_rotation_angle, 0, 0, 1)
-    glutSolidTeapot(teapot_height)
+    glScalef(teapot_scale_x, teapot_scale_y, teapot_scale_z)
+
+    glutWireTeapot(teapot_height)
     glPopMatrix()
 
 
@@ -47,19 +52,31 @@ def reshape(width, height):
 
 
 def keyboard(key, x, y):
-    global teapot_height, teapot_rotation_angle, teapot_position_x
+    global teapot_height, teapot_rotation_angle, teapot_position_x, teapot_scale_y
 
     if key == b'T':
-        teapot_height *= 2
+        teapot_rotation_angle = 0
+        teapot_position_x = 0
+        teapot_scale_y *= 2
     elif key == b't':
-        teapot_height /= 2
+        teapot_rotation_angle = 0
+        teapot_position_x = 0
+        teapot_scale_y /= 2
     elif key == b'q':
+        teapot_position_x = 0
+        teapot_scale_y = 1.0
         teapot_rotation_angle += 30
     elif key == b'Q':
+        teapot_position_x = 0
+        teapot_scale_y = 1.0
         teapot_rotation_angle += 90
     elif key == b'l' or key == b'L':
+        teapot_rotation_angle = 0
+        teapot_scale_y = 1.0
         teapot_position_x -= 1
     elif key == b'r' or key == b'R':
+        teapot_rotation_angle = 0
+        teapot_scale_y = 1.0
         teapot_position_x += 1
 
     glutPostRedisplay()
