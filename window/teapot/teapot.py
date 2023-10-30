@@ -14,6 +14,7 @@ teapot_rotation_angle = 0
 
 # Global variable for teapot position
 teapot_position_x = 0
+tea_pos_x = 0
 
 
 def init():
@@ -38,7 +39,11 @@ def draw_wire_teapot():
 def draw_solid_teapot():
     glPushMatrix()
     # glTranslatef(teapot_position_x, 0, 0)
+    # glRotatef(teapot_rotation_angle, 0, 0, 1)
+    # rotate around
+    glTranslatef(tea_pos_x, 0, 0)
     glRotatef(teapot_rotation_angle, 0, 0, 1)
+    glTranslatef(-tea_pos_x, 0, 0)
     # glScalef(teapot_scale_x, teapot_scale_y, teapot_scale_z)
 
     glutSolidTeapot(teapot_height)
@@ -48,15 +53,15 @@ def draw_solid_teapot():
 def display():
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glLoadIdentity()
-    gluLookAt(0, 0, 2, 0, 0, 0, 0, 1, 0)
+    gluLookAt(0, 0, 2.5, 0, 0, 0, 0, 1, 0)
 
     glPushMatrix()
-    glTranslatef(-0.5, 0, 0)
+    glTranslatef(-1, 0, 0)
     draw_solid_teapot()
     glPopMatrix()
 
     glPushMatrix()
-    glTranslatef(0.5, 0, 0)
+    glTranslatef(0, 0, 0)
     draw_wire_teapot()
     glPopMatrix()
 
@@ -71,8 +76,23 @@ def reshape(width, height):
     glMatrixMode(GL_MODELVIEW)
 
 
+# glutIdleFunc(spin): function to redisplay many time
+def spin():
+    global teapot_rotation_angle, tea_pos_x
+    tea_pos_x = 0.9
+    teapot_rotation_angle += 10
+    glutPostRedisplay()
+
+
+def stop():
+    global teapot_rotation_angle, tea_pos_x
+    tea_pos_x = 0
+    teapot_rotation_angle = 0
+    glutPostRedisplay()
+
+
 def keyboard(key, x, y):
-    global teapot_height, teapot_rotation_angle, teapot_position_x, teapot_scale_y
+    global teapot_height, teapot_rotation_angle, teapot_position_x, teapot_scale_y, tea_pos_x
 
     if key == b'T':
         teapot_rotation_angle = 0
@@ -98,6 +118,10 @@ def keyboard(key, x, y):
         teapot_rotation_angle = 0
         teapot_scale_y = 1.0
         teapot_position_x += 1
+    elif key == b'a':
+        glutIdleFunc(spin)
+    elif key == b's':
+        glutIdleFunc(stop)
 
     glutPostRedisplay()
 
