@@ -7,7 +7,7 @@ teapot_scale_x = 1.0
 teapot_scale_y = 1.0
 teapot_scale_z = 1.0
 # Global variable for teapot height
-teapot_height = 1.0
+teapot_height = 0.3
 
 # Global variable for teapot rotation angle
 teapot_rotation_angle = 0
@@ -25,21 +25,41 @@ def init():
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE)
 
 
-def draw_teapot():
+def draw_wire_teapot():
     glPushMatrix()
-    glTranslatef(teapot_position_x, 0, 0)
-    glRotatef(teapot_rotation_angle, 0, 0, 1)
+    # glTranslatef(teapot_position_x, 0, 0)
+    # glRotatef(teapot_rotation_angle, 0, 0, 1)
     glScalef(teapot_scale_x, teapot_scale_y, teapot_scale_z)
 
     glutWireTeapot(teapot_height)
     glPopMatrix()
 
 
+def draw_solid_teapot():
+    glPushMatrix()
+    # glTranslatef(teapot_position_x, 0, 0)
+    glRotatef(teapot_rotation_angle, 0, 0, 1)
+    # glScalef(teapot_scale_x, teapot_scale_y, teapot_scale_z)
+
+    glutSolidTeapot(teapot_height)
+    glPopMatrix()
+
+
 def display():
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glLoadIdentity()
-    gluLookAt(1, 1, 1, 0, 0, 0, 0, 1, 0)
-    draw_teapot()
+    gluLookAt(0, 0, 2, 0, 0, 0, 0, 1, 0)
+
+    glPushMatrix()
+    glTranslatef(-0.5, 0, 0)
+    draw_solid_teapot()
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslatef(0.5, 0, 0)
+    draw_wire_teapot()
+    glPopMatrix()
+
     glutSwapBuffers()
 
 
