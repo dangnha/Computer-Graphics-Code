@@ -12,7 +12,7 @@ BOTTOM = 4  # 0100
 TOP = 8     # 1000
 
 # Window coordinates (left, right, bottom, top)
-x_min, x_max, y_min, y_max = 50, 300, 50, 300
+x_min, x_max, y_min, y_max = 50, 100, 50, 100
 
 
 def compute_region_code(x, y):

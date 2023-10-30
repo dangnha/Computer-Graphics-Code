@@ -67,10 +67,10 @@ def display():
     glMaterialfv(GL_FRONT, GL_SPECULAR, [1.0, 1.0, 1.0, 1.0])
     glMaterialf(GL_FRONT, GL_SHININESS, 100.0)
 
-    glEnable(GL_LIGHT1)
-    glLightfv(GL_LIGHT1, GL_POSITION, [0, 1, 0, 0])
-    glLightfv(GL_LIGHT1, GL_DIFFUSE, [0.5, 0.0, 0.0, 1.0])
-    glLightfv(GL_LIGHT1, GL_AMBIENT, [0.5, 0.0, 0.0, 1.0])
+    glEnable(GL_LIGHT0)
+    glLightfv(GL_LIGHT0, GL_POSITION, [0, 1, 0, 0])
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, [0.5, 0.0, 0.0, 1.0])
+    glLightfv(GL_LIGHT0, GL_AMBIENT, [0.5, 0.0, 0.0, 1.0])
 
     draw_small_global1()
 
@@ -85,10 +85,10 @@ def display():
     glMaterialfv(GL_FRONT, GL_SPECULAR, [1.0, 1.0, 1.0, 1.0])
     glMaterialf(GL_FRONT, GL_SHININESS, 100.0)
 
-    glEnable(GL_LIGHT1)
-    glLightfv(GL_LIGHT1, GL_POSITION, [0, 1, 0, 0])
-    glLightfv(GL_LIGHT1, GL_DIFFUSE, [0.0, 0.0, 1.0, 1.0])
-    glLightfv(GL_LIGHT1, GL_AMBIENT, [0.0, 0.0, 1.0, 1.0])
+    glEnable(GL_LIGHT0)
+    glLightfv(GL_LIGHT0, GL_POSITION, [0, 1, 0, 0])
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, [0.0, 0.0, 1.0, 1.0])
+    glLightfv(GL_LIGHT0, GL_AMBIENT, [0.0, 0.0, 1.0, 1.0])
 
     draw_big_global()
     glPopMatrix()
@@ -102,10 +102,10 @@ def display():
     glMaterialfv(GL_FRONT, GL_SPECULAR, [1.0, 1.0, 1.0, 1.0])
     glMaterialf(GL_FRONT, GL_SHININESS, 100.0)
 
-    glEnable(GL_LIGHT1)
-    glLightfv(GL_LIGHT1, GL_POSITION, [0, 1, 0, 0])
-    glLightfv(GL_LIGHT1, GL_DIFFUSE, [0.5, 0.5, 0.0, 1.0])
-    glLightfv(GL_LIGHT1, GL_AMBIENT, [0.5, 0.5, 0.0, 1.0])
+    glEnable(GL_LIGHT0)
+    glLightfv(GL_LIGHT0, GL_POSITION, [0, 1, 0, 0])
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, [0.5, 0.5, 0.0, 1.0])
+    glLightfv(GL_LIGHT0, GL_AMBIENT, [0.5, 0.5, 0.0, 1.0])
 
     draw_small_global2()
     glPopMatrix()
@@ -152,7 +152,7 @@ def main():
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH)
     glutInitWindowSize(800, 600)
-    glutCreateWindow("Teapot")
+    glutCreateWindow("Sphere")
     init()
     glutDisplayFunc(display)
     glutReshapeFunc(reshape)
