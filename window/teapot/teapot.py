@@ -30,7 +30,7 @@ def draw_wire_teapot():
     glPushMatrix()
     # glTranslatef(teapot_position_x, 0, 0)
     # glRotatef(teapot_rotation_angle, 0, 0, 1)
-    glScalef(teapot_scale_x, teapot_scale_y, teapot_scale_z)
+    # glScalef(teapot_scale_x, teapot_scale_y, teapot_scale_z)
 
     glutWireTeapot(teapot_height)
     glPopMatrix()
@@ -40,11 +40,12 @@ def draw_solid_teapot():
     glPushMatrix()
     # glTranslatef(teapot_position_x, 0, 0)
     # glRotatef(teapot_rotation_angle, 0, 0, 1)
-    # rotate around
+    # glScalef(teapot_scale_x, teapot_scale_y, teapot_scale_z)
+
+    # rotate around ---------------------------------
     glTranslatef(tea_pos_x, 0, 0)
     glRotatef(teapot_rotation_angle, 0, 0, 1)
     glTranslatef(-tea_pos_x, 0, 0)
-    # glScalef(teapot_scale_x, teapot_scale_y, teapot_scale_z)
 
     glutSolidTeapot(teapot_height)
     glPopMatrix()
@@ -53,7 +54,7 @@ def draw_solid_teapot():
 def display():
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glLoadIdentity()
-    gluLookAt(0, 0, 2.5, 0, 0, 0, 0, 1, 0)
+    gluLookAt(0, 0, 2.6, 0, 0, 0, 0, 1, 0)
 
     glPushMatrix()
     glTranslatef(-1, 0, 0)
@@ -79,8 +80,8 @@ def reshape(width, height):
 # glutIdleFunc(spin): function to redisplay many time
 def spin():
     global teapot_rotation_angle, tea_pos_x
-    tea_pos_x = 0.9
-    teapot_rotation_angle += 10
+    tea_pos_x = 1
+    teapot_rotation_angle += 0.05
     glutPostRedisplay()
 
 
