@@ -1,0 +1,4 @@
+Exercise l: Write a program to do the following requirements using OpenGL: 
+- Create a circle anywhere on the console using a single left mouse click, and the coordinates of the circle's center depend on the position of your click.
+- To change the circle's color, right- click on the mouse. 
+- After performing all operations, jump out of the program by pressing the Esc key on the keyboard.
